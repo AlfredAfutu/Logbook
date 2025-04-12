@@ -1,22 +1,19 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
 
 android {
-    namespace = "com.codelabs.logbook"
+    namespace = "com.codelabs.viewmodel"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.codelabs.logbook"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -38,14 +35,15 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.hilt.android)
-    implementation(project(":screen"))
-    implementation(project(":viewmodel"))
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
     implementation(project(":domain:logic"))
     implementation(project(":domain:model"))
-    implementation(project(":data:repository"))
-    implementation(project(":framework-provider:facade"))
-    implementation(project(":framework-provider:interfaces"))
+
+    testImplementation(libs.junit5.api)
+    testRuntimeOnly(libs.junit5.engine)
 
     ksp(libs.hilt.compiler)
 }

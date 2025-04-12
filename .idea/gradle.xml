@@ -10,6 +10,16 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/data/repository" />
+            <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/domain/logic" />
+            <option value="$PROJECT_DIR$/domain/model" />
+            <option value="$PROJECT_DIR$/framework-provider" />
+            <option value="$PROJECT_DIR$/framework-provider/facade" />
+            <option value="$PROJECT_DIR$/framework-provider/interfaces" />
+            <option value="$PROJECT_DIR$/screen" />
+            <option value="$PROJECT_DIR$/viewmodel" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

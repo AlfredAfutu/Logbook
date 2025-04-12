@@ -21,4 +21,13 @@ dependencyResolutionManagement {
 
 rootProject.name = "Logbook"
 include(":app")
- 
+include(":framework-provider")
+include(":framework-provider:interfaces")
+include(":framework-provider:facade")
+include(":viewmodel")
+include(":data")
+include(":data:repository")
+include(":domain")
+include(":domain:logic")
+include(":domain:model")
+include(":screen")

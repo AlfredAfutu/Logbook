@@ -1,4 +1,4 @@
-package com.codelabs.framework_providers
+package com.codelabs.frameworkprovider
 
 import org.junit.Test
 

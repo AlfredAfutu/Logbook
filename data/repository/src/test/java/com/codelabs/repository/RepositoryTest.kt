@@ -1,4 +1,4 @@
 package com.codelabs.repository
 
-class MyClass {
+abstract class RepositoryTest {
 }

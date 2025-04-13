@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.codelabs.framework_provider"
+    namespace = "com.codelabs.frameworkprovider"
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -37,12 +37,16 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.hilt.android)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(project(":domain:model"))
+    implementation(project(":framework-provider:interfaces"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
 
     ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)

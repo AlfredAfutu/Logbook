@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.codelabs.logbook"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -44,7 +44,6 @@ dependencies {
     implementation(project(":domain:logic"))
     implementation(project(":domain:model"))
     implementation(project(":data:repository"))
-    implementation(project(":framework-provider:facade"))
     implementation(project(":framework-provider:interfaces"))
 
     ksp(libs.hilt.compiler)

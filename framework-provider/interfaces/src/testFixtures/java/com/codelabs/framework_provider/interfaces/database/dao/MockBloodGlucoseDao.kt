@@ -7,8 +7,11 @@ import javax.inject.Inject
 
 class MockBloodGlucoseDao @Inject constructor() : IBloodGlucoseDao {
     private val bloodGlucoseReadings = mutableListOf<BloodGlucose>()
+    var insertCount: Int = 0
+        private set
 
     override suspend fun insert(bloodGlucose: BloodGlucose) {
+        insertCount++
         bloodGlucoseReadings.add(bloodGlucose)
     }
 

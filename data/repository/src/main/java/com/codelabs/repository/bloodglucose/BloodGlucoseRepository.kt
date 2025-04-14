@@ -18,8 +18,7 @@ class BloodGlucoseRepository @Inject constructor(
         }
     }
 
-    fun getAllBloodGlucoseReadings(): Flow<List<BloodGlucose>> {
-        return database.bloodGlucoseDao().getAll()
+    fun getAllBloodGlucoseReadings(): Flow<List<BloodGlucose>> =
+        database.bloodGlucoseDao().getAll()
             .flowOn(databaseDispatcher.database)
-    }
 }

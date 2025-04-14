@@ -9,9 +9,13 @@ class MockBloodGlucoseDao @Inject constructor() : IBloodGlucoseDao {
     private val bloodGlucoseReadings = mutableListOf<BloodGlucose>()
     var insertCount: Int = 0
         private set
+    val levels = mutableListOf<Double>()
+    val timestamps = mutableListOf<String>()
 
     override suspend fun insert(bloodGlucose: BloodGlucose) {
         insertCount++
+        levels.add(bloodGlucose.level)
+        timestamps.add(bloodGlucose.timestamp.toString())
         bloodGlucoseReadings.add(bloodGlucose)
     }
 

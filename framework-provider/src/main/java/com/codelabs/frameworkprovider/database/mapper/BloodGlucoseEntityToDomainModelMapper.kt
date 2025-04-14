@@ -8,7 +8,6 @@ class BloodGlucoseEntityToDomainModelMapper @Inject constructor() {
     operator fun invoke(entities: List<BloodGlucoseEntity>): List<BloodGlucose> {
         return entities.map { entity ->
             BloodGlucose(
-                id = entity.id,
                 timestamp = entity.timestamp,
                 level = entity.level
             )

@@ -7,7 +7,6 @@ import javax.inject.Inject
 class BloodGlucoseDomainModelToEntityMapper @Inject constructor() {
     operator fun invoke(domain: BloodGlucose): BloodGlucoseEntity {
         return BloodGlucoseEntity(
-            id = domain.id,
             timestamp = domain.timestamp,
             level = domain.level
         )

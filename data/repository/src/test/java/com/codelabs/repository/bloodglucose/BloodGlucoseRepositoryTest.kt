@@ -35,8 +35,8 @@ class BloodGlucoseRepositoryTest : RepositoryTest() {
         inner class BloodGlucoseAdded {
             @BeforeEach
             fun setup() {
-                val bloodGlucose1 = BloodGlucose(101, LocalDateTime.now(), level = 129.0)
-                val bloodGlucose2 = BloodGlucose(102, LocalDateTime.now(), level = 130.0)
+                val bloodGlucose1 = BloodGlucose(LocalDateTime.now(), level = 129.0)
+                val bloodGlucose2 = BloodGlucose(LocalDateTime.now(), level = 130.0)
                 runTest {
                     repository.addBloodGlucoseReading(bloodGlucose1)
                     repository.addBloodGlucoseReading(bloodGlucose2)
@@ -70,12 +70,12 @@ class BloodGlucoseRepositoryTest : RepositoryTest() {
 
             @Test
             fun `then it should return the first reading as inserted`() {
-                Assertions.assertEquals(101, readings[0].id)
+                Assertions.assertEquals(129.0, readings[0].level)
             }
 
             @Test
             fun `then it should return the second reading as inserted`() {
-                Assertions.assertEquals(102, readings[1].id)
+                Assertions.assertEquals(130.0, readings[1].level)
             }
         }
     }

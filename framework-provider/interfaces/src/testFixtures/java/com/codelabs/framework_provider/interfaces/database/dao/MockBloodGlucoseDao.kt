@@ -2,7 +2,7 @@ package com.codelabs.framework_provider.interfaces.database.dao
 
 import com.codelabs.model.BloodGlucose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 class MockBloodGlucoseDao @Inject constructor() : IBloodGlucoseDao {
@@ -11,15 +11,15 @@ class MockBloodGlucoseDao @Inject constructor() : IBloodGlucoseDao {
         private set
     val levels = mutableListOf<Double>()
     val timestamps = mutableListOf<String>()
+    val flow: MutableStateFlow<List<BloodGlucose>> = MutableStateFlow(emptyList())
 
     override suspend fun insert(bloodGlucose: BloodGlucose) {
         insertCount++
+        bloodGlucoseReadings.add(bloodGlucose)
+        flow.emit(bloodGlucoseReadings)
         levels.add(bloodGlucose.level)
         timestamps.add(bloodGlucose.timestamp.toString())
-        bloodGlucoseReadings.add(bloodGlucose)
     }
 
-    override fun getAll(): Flow<List<BloodGlucose>> {
-        return flowOf(bloodGlucoseReadings)
-    }
+    override fun getAll(): Flow<List<BloodGlucose>> = flow
 }

@@ -32,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
 dependencies {
@@ -44,6 +48,11 @@ dependencies {
 
     testImplementation(libs.junit5.api)
     testRuntimeOnly(libs.junit5.engine)
+    testImplementation(libs.junit5.platform)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(testFixtures(project(":framework-provider:interfaces")))
+    testImplementation(project(":data:repository"))
 
+    ksp(libs.dagger.compiler)
     ksp(libs.hilt.compiler)
 }

@@ -3,7 +3,7 @@ package com.codelabs.logic.bloodglucose
 import com.codelabs.framework_provider.interfaces.database.dao.MockBloodGlucoseDao
 import com.codelabs.logic.UseCaseTest
 import com.codelabs.logic.di.component.DaggerLogicTestComponent
-import com.codelabs.model.Reading
+import com.codelabs.model.ReadingInput
 import com.codelabs.model.Unit
 import com.codelabs.model.toMMOLL
 import kotlinx.coroutines.test.runTest
@@ -15,14 +15,15 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
 import javax.inject.Inject
 
-class AddBloodGlucoseReadingUseCaseTest : UseCaseTest() {
+class AddBloodGlucoseReadingInputUseCaseTest : UseCaseTest() {
     @Inject
     lateinit var dao: MockBloodGlucoseDao
 
     @Inject
     lateinit var useCase: AddBloodGlucoseReadingUseCase
 
-    init {
+    @BeforeEach
+    fun setup() {
         DaggerLogicTestComponent.create().inject(this)
     }
 
@@ -31,11 +32,11 @@ class AddBloodGlucoseReadingUseCaseTest : UseCaseTest() {
     inner class Invoked {
         @Nested
         @DisplayName("When the reading is in the mg/dl unit")
-        inner class ReadingInMgDl {
+        inner class ReadingInputInMgDl {
             private val timestamp = LocalDateTime.now()
             @BeforeEach
             fun setup() {
-                val reading = Reading(
+                val reading = ReadingInput(
                     level = 180.0,
                     unit = Unit.MG_DL,
                     timestamp = timestamp
@@ -58,11 +59,11 @@ class AddBloodGlucoseReadingUseCaseTest : UseCaseTest() {
 
         @Nested
         @DisplayName("When the reading is in the mmol/l unit")
-        inner class ReadingInMmoLl {
+        inner class ReadingInputInMmoLl {
             private val timestamp = LocalDateTime.now()
             @BeforeEach
             fun setup() {
-                val reading = Reading(
+                val reading = ReadingInput(
                     level = 180.0,
                     unit = Unit.MMOL_L,
                     timestamp = timestamp

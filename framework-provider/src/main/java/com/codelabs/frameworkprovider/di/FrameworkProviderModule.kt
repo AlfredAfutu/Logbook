@@ -3,7 +3,9 @@ package com.codelabs.frameworkprovider.di
 import android.app.Application
 import androidx.room.Room
 import com.codelabs.framework_provider.interfaces.database.ILogbookDatabase
+import com.codelabs.framework_provider.interfaces.dispatcher.IDispatcherProvider
 import com.codelabs.frameworkprovider.database.LogbookDatabase
+import com.codelabs.frameworkprovider.dispatcher.DispatcherProvider
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -18,6 +20,10 @@ interface FrameworkProviderModule {
     @Binds
     fun bindLogbookDatabase(logbookDatabase: LogbookDatabase): ILogbookDatabase
 
+    @Singleton
+    @Binds
+    fun bindDispatcherProvider(dispatcherProvider: DispatcherProvider): IDispatcherProvider
+
     companion object {
         @Singleton
         @Provides
@@ -27,6 +33,12 @@ interface FrameworkProviderModule {
                 LogbookDatabase::class.java, "logbook_database"
             )
                 .build()
+        }
+
+        @Singleton
+        @Provides
+        fun provideDispatcherProvider(): IDispatcherProvider {
+            return DispatcherProvider()
         }
     }
 }

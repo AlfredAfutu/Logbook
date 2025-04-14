@@ -22,6 +22,7 @@ dependencies {
     testImplementation(libs.dagger)
     testFixturesImplementation(libs.dagger)
     testFixturesImplementation(libs.kotlinx.coroutines.core)
+    testFixturesImplementation(libs.kotlinx.coroutines.test)
     testFixturesImplementation(project(":domain:model"))
     ksp(libs.dagger.compiler)
 }

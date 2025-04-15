@@ -10,9 +10,11 @@ import javax.inject.Inject
 class GetAverageBloodGlucoseLevelUseCase @Inject constructor(
     private val repository: BloodGlucoseRepository
 ) {
-    operator fun invoke(): Flow<AverageLevel> =
+    operator fun invoke(): Flow<AverageLevel?> =
         repository.getAllBloodGlucoseReadings()
             .map { it.map { reading -> reading.level } }
-            .map { it.average() }
-            .map { AverageLevel(it, it.toMGDL()) }
+            .map {
+                it.takeIf { it.isNotEmpty() }?.average()
+                    ?.let { level -> AverageLevel(level, level.toMGDL()) }
+            }
 }

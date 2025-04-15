@@ -46,11 +46,6 @@ class ReadingsViewModelTest : ViewModelTest() {
         @Nested
         @DisplayName("When there are no readings")
         inner class NoReadings {
-            @BeforeEach
-            fun setup() = runTest {
-                dao.flow.emit(emptyList())
-            }
-
             @Test
             fun `then the state is empty`() = runTest {
                 assertEquals(ReadingsViewModel.State.Empty, viewModel.state.value)

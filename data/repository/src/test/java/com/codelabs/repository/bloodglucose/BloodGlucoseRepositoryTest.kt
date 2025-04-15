@@ -59,7 +59,7 @@ class BloodGlucoseRepositoryTest : RepositoryTest() {
 
                 @BeforeEach
                 fun setup() = runTest {
-                    backgroundScope.launch(dispatcher.main) {
+                    backgroundScope.launch(dispatcher.database) {
                         repository.getAllBloodGlucoseReadings().collectLatest { readings = it }
                     }
                 }

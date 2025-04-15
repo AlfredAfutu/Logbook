@@ -98,7 +98,7 @@ class AverageReadingViewModelTest : ViewModelTest() {
             inner class UnitChanged {
                 @BeforeEach
                 fun setup() {
-                    viewModel.onUnitSelected(Unit.MG_DL)
+                    viewModel.onUnitChange(Unit.MG_DL)
                 }
 
                 @OptIn(ExperimentalCoroutinesApi::class)

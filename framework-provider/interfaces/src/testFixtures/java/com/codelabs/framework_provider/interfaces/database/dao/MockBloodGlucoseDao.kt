@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 class MockBloodGlucoseDao @Inject constructor() : IBloodGlucoseDao {
-    private val bloodGlucoseReadings = mutableListOf<BloodGlucose>()
+    private val _bloodGlucoseReadings = mutableListOf<BloodGlucose>()
     var insertCount: Int = 0
         private set
     val levels = mutableListOf<Double>()
@@ -15,8 +15,8 @@ class MockBloodGlucoseDao @Inject constructor() : IBloodGlucoseDao {
 
     override suspend fun insert(bloodGlucose: BloodGlucose) {
         insertCount++
-        bloodGlucoseReadings.add(bloodGlucose)
-        flow.emit(bloodGlucoseReadings)
+        _bloodGlucoseReadings.add(bloodGlucose)
+        flow.emit(_bloodGlucoseReadings)
         levels.add(bloodGlucose.level)
         timestamps.add(bloodGlucose.timestamp.toString())
     }

@@ -41,7 +41,7 @@ class AverageReadingViewModel @Inject constructor(
             State.Loading
         )
 
-    fun onUnitSelected(unit: Unit) {
+    fun onUnitChange(unit: Unit) {
         selectedUnit.value = unit
     }
 }

@@ -62,7 +62,7 @@ class ReadingsViewModelTest : ViewModelTest() {
 
             @BeforeEach
             fun setup() = runTest {
-                readings.forEach { dao.insert(it) }
+               dao.flow.emit(readings)
             }
 
             @Test

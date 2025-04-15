@@ -11,7 +11,7 @@ class MockBloodGlucoseDao @Inject constructor() : IBloodGlucoseDao {
         private set
     val levels = mutableListOf<Double>()
     val timestamps = mutableListOf<String>()
-    private val flow: MutableStateFlow<List<BloodGlucose>> = MutableStateFlow(emptyList())
+    val flow: MutableStateFlow<List<BloodGlucose>> = MutableStateFlow(emptyList())
 
     override suspend fun insert(bloodGlucose: BloodGlucose) {
         insertCount++

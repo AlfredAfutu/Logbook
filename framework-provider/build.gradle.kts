@@ -39,7 +39,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    implementation(libs.hilt.android)
+    implementation(libs.dagger)
     implementation(libs.kotlinx.coroutines.core)
     implementation(project(":domain:model"))
     implementation(project(":framework-provider:interfaces"))
@@ -49,5 +49,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     ksp(libs.androidx.room.compiler)
-    ksp(libs.hilt.compiler)
+    ksp(libs.dagger.compiler)
 }

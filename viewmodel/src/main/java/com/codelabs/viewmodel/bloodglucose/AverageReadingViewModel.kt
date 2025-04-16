@@ -5,14 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.codelabs.logic.bloodglucose.GetAverageBloodGlucoseLevelUseCase
 import com.codelabs.model.Unit
 import com.codelabs.viewmodel.bloodglucose.model.AverageReadingUIModel
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.codelabs.viewmodel.di.ViewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-@HiltViewModel
+@ViewModelScope
 class AverageReadingViewModel @Inject constructor(
     getAverageBloodGlucoseLevel: GetAverageBloodGlucoseLevelUseCase
 ) : ViewModel() {

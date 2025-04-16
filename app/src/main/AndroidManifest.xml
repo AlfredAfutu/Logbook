@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Logbook"
+        android:name=".application.LogbookApplication"
         tools:targetApi="31">
         <activity
-            android:name="com.codelabs.screen.main.MainActivity"
+            android:name=".activity.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Logbook">
             <intent-filter>

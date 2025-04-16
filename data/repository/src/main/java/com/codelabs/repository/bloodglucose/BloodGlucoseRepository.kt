@@ -7,7 +7,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class BloodGlucoseRepository @Inject constructor(
     private val database: ILogbookDatabase,
     private val databaseDispatcher: IDispatcherProvider

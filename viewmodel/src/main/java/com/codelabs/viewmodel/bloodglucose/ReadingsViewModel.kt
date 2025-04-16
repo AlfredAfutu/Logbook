@@ -5,14 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.codelabs.logic.bloodglucose.GetBloodGlucoseReadingsUseCase
 import com.codelabs.viewmodel.bloodglucose.mapper.BloodGlucoseDomainToUIModelMapper
 import com.codelabs.viewmodel.bloodglucose.model.ReadingUIModel
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.codelabs.viewmodel.di.ViewModelScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-@HiltViewModel
+@ViewModelScope
 class ReadingsViewModel @Inject constructor(
     getBloodGlucoseReadings: GetBloodGlucoseReadingsUseCase,
     private val mapper: BloodGlucoseDomainToUIModelMapper

@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
 }
 
 android {
@@ -40,7 +39,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.hilt.android)
+    implementation(libs.dagger)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(project(":domain:logic"))
@@ -54,5 +53,4 @@ dependencies {
     testImplementation(project(":data:repository"))
 
     ksp(libs.dagger.compiler)
-    ksp(libs.hilt.compiler)
 }

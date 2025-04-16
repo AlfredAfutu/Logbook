@@ -1,15 +1,14 @@
-package com.codelabs.logic.di
+package com.codelabs.logic.di.module
 
 import com.codelabs.logic.bloodglucose.AddBloodGlucoseReadingUseCase
 import com.codelabs.logic.bloodglucose.GetAverageBloodGlucoseLevelUseCase
 import com.codelabs.logic.bloodglucose.GetBloodGlucoseReadingsUseCase
 import com.codelabs.repository.bloodglucose.BloodGlucoseRepository
-import com.codelabs.repository.di.RepositoryModule
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = [RepositoryModule::class])
-object DomainModule {
+@Module
+object DomainTestModule {
     @Provides
     fun provideAddBloodGlucoseReadingUseCase(
         bloodGlucoseRepository: BloodGlucoseRepository

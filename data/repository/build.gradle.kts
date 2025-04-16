@@ -28,6 +28,7 @@ dependencies {
     testRuntimeOnly(libs.junit5.engine)
     testImplementation(libs.junit5.platform)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.dagger)
     testImplementation(testFixtures(project(":framework-provider:interfaces")))
 
     ksp(libs.dagger.compiler)

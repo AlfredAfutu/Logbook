@@ -7,14 +7,14 @@ import com.codelabs.model.Unit
 import com.codelabs.model.toMGDL
 import com.codelabs.model.toMMOLL
 import com.codelabs.viewmodel.bloodglucose.model.ReadingEntryUIModel
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.codelabs.viewmodel.di.ViewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.time.LocalDateTime
 import javax.inject.Inject
 
-@HiltViewModel
+@ViewModelScope
 class ReadingEntryViewModel @Inject constructor(
     private val addBloodGlucoseReading: AddBloodGlucoseReadingUseCase
 ): ViewModel() {

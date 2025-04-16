@@ -9,12 +9,9 @@ import com.codelabs.frameworkprovider.dispatcher.DispatcherProvider
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
 interface FrameworkProviderModule {
     @Singleton
     @Binds
@@ -33,12 +30,6 @@ interface FrameworkProviderModule {
                 LogbookDatabase::class.java, "logbook_database"
             )
                 .build()
-        }
-
-        @Singleton
-        @Provides
-        fun provideDispatcherProvider(): IDispatcherProvider {
-            return DispatcherProvider()
         }
     }
 }

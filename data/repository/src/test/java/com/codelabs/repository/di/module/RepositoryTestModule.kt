@@ -1,4 +1,4 @@
-package com.codelabs.repository.di
+package com.codelabs.repository.di.module
 
 import com.codelabs.framework_provider.interfaces.database.ILogbookDatabase
 import com.codelabs.framework_provider.interfaces.dispatcher.IDispatcherProvider
@@ -8,7 +8,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object RepositoryModule {
+object RepositoryTestModule {
     @Singleton
     @Provides
     fun provideBloodGlucoseRepository(

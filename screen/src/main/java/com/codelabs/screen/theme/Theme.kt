@@ -1,4 +1,4 @@
-package com.codelabs.screen.main.theme
+package com.codelabs.screen.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

@@ -13,7 +13,7 @@ data class ReadingEntryUIModel(
             unitOptions = Unit.entries,
             selectedUnit = Unit.MMOL_L,
             level = "",
-            isInvalid = false
+            isInvalid = true
         )
     }
 }

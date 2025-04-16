@@ -1,4 +1,4 @@
-package com.codelabs.screen.main.theme
+package com.codelabs.screen.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

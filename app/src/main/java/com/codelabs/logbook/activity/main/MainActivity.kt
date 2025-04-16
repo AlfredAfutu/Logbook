@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.ViewModelProvider
 import com.codelabs.logbook.application.LogbookApplication
-import com.codelabs.screen.main.screen.MainScreen
+import com.codelabs.screen.bloodglucose.BloodGlucoseScreen
 import com.codelabs.viewmodel.bloodglucose.AverageReadingViewModel
 import com.codelabs.viewmodel.bloodglucose.ReadingEntryViewModel
 import com.codelabs.viewmodel.bloodglucose.ReadingsViewModel
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            MainScreen(readingsViewModel, averageReadingViewModel, readingEntryViewModel)
+            BloodGlucoseScreen(readingsViewModel, averageReadingViewModel, readingEntryViewModel)
         }
     }
 }

@@ -17,7 +17,7 @@ import javax.inject.Inject
 @ViewModelScope
 class ReadingEntryViewModel @Inject constructor(
     private val addBloodGlucoseReading: AddBloodGlucoseReadingUseCase
-): ViewModel() {
+) : ViewModel() {
     private val _state = MutableStateFlow(ReadingEntryUIModel.DEFAULT)
     val state: StateFlow<ReadingEntryUIModel> = _state.asStateFlow()
 
@@ -40,16 +40,14 @@ class ReadingEntryViewModel @Inject constructor(
 
     fun onLevelChange(level: String) {
         val levelForUpdate = level.toDoubleOrNull()
-        val newState = when {
-            levelForUpdate == null || levelForUpdate < 0 -> _state.value.copy(isInvalid = true)
-            else -> _state.value.copy(level = level, isInvalid = false)
+        val isInvalid = when {
+            levelForUpdate == null || levelForUpdate < 0 -> true
+            else -> false
         }
-        _state.value = newState
+        _state.value = state.value.copy(level = level, isInvalid = isInvalid)
     }
 
-    suspend fun onSaveTap(
-        level: String
-    ) {
+    suspend fun onSaveTap(level: String) {
         val levelToSave = level.toDoubleOrNull()
         val newState = when {
             levelToSave == null || levelToSave < 0 -> _state.value.copy(isInvalid = true)

@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(project(":viewmodel"))
+    implementation(project(":domain:model"))
 
     testImplementation(libs.junit5.api)
     testRuntimeOnly(libs.junit5.engine)

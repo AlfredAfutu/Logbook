@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mmoll_label">mmol/L</string>
+    <string name="mgdl_label">mg/dL</string>
+    <string name="average_reading_empty_text">Your average reading is not available</string>
+    <string name="average_reading_loaded_text">Your average reading is %s</string>
+    <string name="average_reading_loading_text">Retrieving your average reading…</string>
+    <string name="reading_entry_section_title">Add measurement</string>
+    <string name="save_button_text">Save</string>
+</resources>

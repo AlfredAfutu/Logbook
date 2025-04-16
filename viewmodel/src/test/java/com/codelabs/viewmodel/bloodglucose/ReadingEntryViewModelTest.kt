@@ -265,6 +265,11 @@ class ReadingEntryViewModelTest : ViewModelTest() {
                     fun `then the level is cleared`() = runTest {
                         assertEquals("", viewModel.state.value.level)
                     }
+
+                    @Test
+                    fun `then the state is invalid`() = runTest {
+                        assertTrue(viewModel.state.value.isInvalid)
+                    }
                 }
 
                 @Nested
@@ -284,6 +289,11 @@ class ReadingEntryViewModelTest : ViewModelTest() {
                     @Test
                     fun `then the level is cleared`() = runTest {
                         assertEquals("", viewModel.state.value.level)
+                    }
+
+                    @Test
+                    fun `then the state is invalid`() = runTest {
+                        assertTrue(viewModel.state.value.isInvalid)
                     }
                 }
             }
@@ -346,6 +356,11 @@ class ReadingEntryViewModelTest : ViewModelTest() {
                     fun `then the level is cleared`() = runTest {
                         assertEquals("", viewModel.state.value.level)
                     }
+
+                    @Test
+                    fun `then the state is invalid`() = runTest {
+                        assertTrue(viewModel.state.value.isInvalid)
+                    }
                 }
 
                 @Nested
@@ -365,6 +380,11 @@ class ReadingEntryViewModelTest : ViewModelTest() {
                     @Test
                     fun `then the level is cleared`() = runTest {
                         assertEquals("", viewModel.state.value.level)
+                    }
+
+                    @Test
+                    fun `then the state is invalid`() = runTest {
+                        assertTrue(viewModel.state.value.isInvalid)
                     }
                 }
             }

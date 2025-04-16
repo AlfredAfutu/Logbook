@@ -57,7 +57,9 @@ class ReadingEntryViewModel @Inject constructor(
                     timestamp = LocalDateTime.now(),
                     unit = state.value.selectedUnit
                 )
-                addBloodGlucoseReading(input).let { _state.value.copy(level = "") }
+                addBloodGlucoseReading(input).let {
+                    _state.value.copy(level = "", isInvalid = true)
+                }
             }
         }
         _state.value = newState

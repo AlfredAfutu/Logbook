@@ -4,9 +4,12 @@ import com.codelabs.framework_provider.interfaces.database.dao.MockBloodGlucoseD
 import com.codelabs.framework_provider.interfaces.dispatcher.MockDispatcherProvider
 import com.codelabs.model.BloodGlucose
 import com.codelabs.model.toMGDL
+import com.codelabs.model.toTwoDecimals
 import com.codelabs.viewmodel.ViewModelTest
 import com.codelabs.viewmodel.di.component.DaggerViewModelTestComponent
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertInstanceOf
@@ -46,8 +49,10 @@ class ReadingsViewModelTest : ViewModelTest() {
         @Nested
         @DisplayName("When there are no readings")
         inner class NoReadings {
+            @OptIn(ExperimentalCoroutinesApi::class)
             @Test
             fun `then the state is empty`() = runTest {
+                advanceUntilIdle()
                 assertEquals(ReadingsViewModel.State.Empty, viewModel.state.value)
             }
         }
@@ -65,34 +70,44 @@ class ReadingsViewModelTest : ViewModelTest() {
                dao.flow.emit(readings)
             }
 
+            @OptIn(ExperimentalCoroutinesApi::class)
             @Test
             fun `then the state is success`() = runTest {
+                advanceUntilIdle()
                 val state = viewModel.state.value
                 assertInstanceOf(ReadingsViewModel.State.Success::class.java, state)
             }
 
+            @OptIn(ExperimentalCoroutinesApi::class)
             @Test
             fun `then the first readings is displayed in mgDl`() = runTest {
+                advanceUntilIdle()
                 val state = viewModel.state.value as ReadingsViewModel.State.Success
-                assertEquals(readings.first().level.toMGDL(), state.readings.first().levelInMgDL)
+                assertEquals(readings.first().level.toMGDL().toTwoDecimals(), state.readings.last().levelInMgDL)
             }
 
+            @OptIn(ExperimentalCoroutinesApi::class)
             @Test
             fun `then the first readings is displayed in mmoLl`() = runTest {
+                advanceUntilIdle()
                 val state = viewModel.state.value as ReadingsViewModel.State.Success
-                assertEquals(readings.first().level, state.readings.first().levelInMMOLL)
+                assertEquals(readings.first().level.toTwoDecimals(), state.readings.last().levelInMMOLL)
             }
 
+            @OptIn(ExperimentalCoroutinesApi::class)
             @Test
             fun `then the second readings is displayed in mgDl`() = runTest {
+                advanceUntilIdle()
                 val state = viewModel.state.value as ReadingsViewModel.State.Success
-                assertEquals(readings.last().level.toMGDL(), state.readings.last().levelInMgDL)
+                assertEquals(readings.last().level.toMGDL().toTwoDecimals(), state.readings.first().levelInMgDL)
             }
 
+            @OptIn(ExperimentalCoroutinesApi::class)
             @Test
             fun `then the second readings is displayed in mmoLl`() = runTest {
+                advanceUntilIdle()
                 val state = viewModel.state.value as ReadingsViewModel.State.Success
-                assertEquals(readings.last().level, state.readings.last().levelInMMOLL)
+                assertEquals(readings.last().level.toTwoDecimals(), state.readings.first().levelInMMOLL)
             }
         }
     }

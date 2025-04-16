@@ -7,4 +7,6 @@
     <string name="average_reading_loading_text">Retrieving your average reading…</string>
     <string name="reading_entry_section_title">Add measurement</string>
     <string name="save_button_text">Save</string>
+    <string name="previous_readings_section_empty_text">No previous readings available</string>
+    <string name="previous_readings_section_title">Previous Readings</string>
 </resources>

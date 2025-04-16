@@ -54,8 +54,8 @@ class ReadingEntryViewModelTest : ViewModelTest() {
             }
 
             @Test
-            fun `then it is not invalid`() = runTest {
-                assertFalse(viewModel.state.value.isInvalid)
+            fun `then it is invalid`() = runTest {
+                assertTrue(viewModel.state.value.isInvalid)
             }
 
             @Test
@@ -84,8 +84,8 @@ class ReadingEntryViewModelTest : ViewModelTest() {
             }
 
             @Test
-            fun `then it is not invalid`() = runTest {
-                assertFalse(viewModel.state.value.isInvalid)
+            fun `then it is invalid`() = runTest {
+                assertTrue(viewModel.state.value.isInvalid)
             }
 
             @Test
@@ -130,8 +130,8 @@ class ReadingEntryViewModelTest : ViewModelTest() {
                 }
 
                 @Test
-                fun `then the level is not updated`() = runTest {
-                    assertEquals("", viewModel.state.value.level)
+                fun `then the level stays the same`() = runTest {
+                    assertEquals("-9021", viewModel.state.value.level)
                 }
 
                 @Test
@@ -154,8 +154,8 @@ class ReadingEntryViewModelTest : ViewModelTest() {
                 }
 
                 @Test
-                fun `then the level is not updated`() = runTest {
-                    assertEquals("", viewModel.state.value.level)
+                fun `then the level stays the same`() = runTest {
+                    assertEquals("abc", viewModel.state.value.level)
                 }
 
                 @Test

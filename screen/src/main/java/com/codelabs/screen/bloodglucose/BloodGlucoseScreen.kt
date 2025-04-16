@@ -34,7 +34,7 @@ fun BloodGlucoseScreen(
             val coroutineScope = rememberCoroutineScope()
 
             Column(
-                verticalArrangement = Arrangement.spacedBy(SizeDp.Size8),
+                verticalArrangement = Arrangement.spacedBy(SizeDp.Size12),
                 modifier = Modifier.padding(SizeDp.Size20)
             ) {
                 AverageReadingComponent(
@@ -57,10 +57,7 @@ fun BloodGlucoseScreen(
                         }
                     }
                 )
-                ReadingsComponent(
-                    state = readingsState,
-                    contentPadding = innerPadding
-                )
+                ReadingsComponent(state = readingsState)
             }
         }
     }

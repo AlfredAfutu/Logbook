@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codelabs.logic.bloodglucose.GetAverageBloodGlucoseLevelUseCase
 import com.codelabs.model.Unit
+import com.codelabs.model.toTwoDecimals
 import com.codelabs.viewmodel.bloodglucose.model.AverageReadingUIModel
 import com.codelabs.viewmodel.di.ViewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,8 +30,8 @@ class AverageReadingViewModel @Inject constructor(
             averageLevel == null -> State.Empty
             else -> {
                 when (unit) {
-                    Unit.MMOL_L -> State.Success(AverageReadingUIModel(averageLevel.mmoLL, unit))
-                    Unit.MG_DL -> State.Success(AverageReadingUIModel(averageLevel.mgDL, unit))
+                    Unit.MMOL_L -> constructSuccessState(averageLevel.mmoLL, unit)
+                    Unit.MG_DL -> constructSuccessState(averageLevel.mgDL, unit)
                 }
             }
         }
@@ -40,6 +41,11 @@ class AverageReadingViewModel @Inject constructor(
             SharingStarted.WhileSubscribed(stopTimeoutMillis = 1000L),
             State.Loading
         )
+
+    private fun constructSuccessState(
+        averageLevel: Double,
+        unit: Unit
+    ): State = State.Success(AverageReadingUIModel(averageLevel.toTwoDecimals(), unit))
 
     fun onUnitChange(unit: Unit) {
         selectedUnit.value = unit

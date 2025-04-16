@@ -4,6 +4,7 @@ import com.codelabs.framework_provider.interfaces.database.dao.MockBloodGlucoseD
 import com.codelabs.framework_provider.interfaces.dispatcher.MockDispatcherProvider
 import com.codelabs.model.BloodGlucose
 import com.codelabs.model.Unit
+import com.codelabs.model.toTwoDecimals
 import com.codelabs.viewmodel.ViewModelTest
 import com.codelabs.viewmodel.di.component.DaggerViewModelTestComponent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -82,7 +83,7 @@ class AverageReadingViewModelTest : ViewModelTest() {
             fun `then the level is correct`() = runTest {
                 advanceUntilIdle()
                 val state = viewModel.state.value as AverageReadingViewModel.State.Success
-                assertEquals(5.75, state.uiModel.level)
+                assertEquals(5.75.toTwoDecimals(), state.uiModel.level)
             }
 
             @OptIn(ExperimentalCoroutinesApi::class)
@@ -114,7 +115,7 @@ class AverageReadingViewModelTest : ViewModelTest() {
                 fun `then the level is correct`() = runTest {
                     advanceUntilIdle()
                     val state = viewModel.state.value as AverageReadingViewModel.State.Success
-                    assertEquals(103.60465, state.uiModel.level)
+                    assertEquals(103.60465.toTwoDecimals(), state.uiModel.level)
                 }
             }
         }

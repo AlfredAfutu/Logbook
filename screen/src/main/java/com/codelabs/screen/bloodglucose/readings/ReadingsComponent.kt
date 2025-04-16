@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.CircularProgressIndicator
@@ -88,7 +88,7 @@ private fun ReadingsLoadedComponent(readings: List<ReadingUIModel>) {
     LazyColumn(
         modifier = Modifier.fillMaxWidth()
     ) {
-        items(readings) { reading ->
+        itemsIndexed(readings) { index, reading ->
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -97,7 +97,7 @@ private fun ReadingsLoadedComponent(readings: List<ReadingUIModel>) {
                 Text(text = "Reading: ${reading.levelInMMOLL} ${Unit.MMOL_L.label()} (${reading.levelInMgDL} ${Unit.MG_DL.label()})")
                 Text(text = "Date: ${reading.dateString}")
             }
-            if (readings.last() != reading) HorizontalDivider(thickness = 0.5.dp)
+            if (index < readings.lastIndex) HorizontalDivider(thickness = 0.5.dp)
         }
     }
 }

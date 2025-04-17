@@ -6,14 +6,14 @@ import com.codelabs.logic.bloodglucose.GetAverageBloodGlucoseLevelUseCase
 import com.codelabs.model.Unit
 import com.codelabs.model.toTwoDecimals
 import com.codelabs.viewmodel.bloodglucose.model.AverageReadingUIModel
-import com.codelabs.viewmodel.di.ViewModelScope
+import com.codelabs.viewmodel.di.ActivityScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-@ViewModelScope
+@ActivityScope
 class AverageReadingViewModel @Inject constructor(
     getAverageBloodGlucoseLevel: GetAverageBloodGlucoseLevelUseCase
 ) : ViewModel() {

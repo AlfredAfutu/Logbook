@@ -2,10 +2,10 @@ package com.codelabs.logbook.activity.main.di
 
 import com.codelabs.logbook.activity.main.MainActivity
 import com.codelabs.viewmodel.di.ViewModelModule
-import com.codelabs.viewmodel.di.ViewModelScope
+import com.codelabs.viewmodel.di.ActivityScope
 import dagger.Subcomponent
 
-@ViewModelScope
+@ActivityScope
 @Subcomponent(modules = [ViewModelModule::class])
 interface MainComponent {
     @Subcomponent.Factory

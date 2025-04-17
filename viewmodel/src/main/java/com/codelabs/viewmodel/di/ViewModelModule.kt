@@ -13,25 +13,25 @@ import kotlin.reflect.KClass
 
 @Module
 interface ViewModelModule {
-    @ViewModelScope
+    @ActivityScope
     @Binds
     @IntoMap
     @ViewModelKey(ReadingEntryViewModel::class)
     fun bindReadingEntryViewModel(viewModel: ReadingEntryViewModel): ViewModel
 
-    @ViewModelScope
+    @ActivityScope
     @Binds
     @IntoMap
     @ViewModelKey(AverageReadingViewModel::class)
     fun bindAverageReadingViewModel(viewModel: AverageReadingViewModel): ViewModel
 
-    @ViewModelScope
+    @ActivityScope
     @Binds
     @IntoMap
     @ViewModelKey(ReadingsViewModel::class)
     fun bindReadingsViewModel(viewModel: ReadingsViewModel): ViewModel
 
-    @ViewModelScope
+    @ActivityScope
     @Binds
     fun bindViewModelFactory(factory: ViewModelProviderFactory): ViewModelProvider.Factory
 }

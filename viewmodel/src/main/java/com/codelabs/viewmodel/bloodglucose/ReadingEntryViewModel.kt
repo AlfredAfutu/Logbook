@@ -7,14 +7,14 @@ import com.codelabs.model.Unit
 import com.codelabs.model.toMGDL
 import com.codelabs.model.toMMOLL
 import com.codelabs.viewmodel.bloodglucose.model.ReadingEntryUIModel
-import com.codelabs.viewmodel.di.ViewModelScope
+import com.codelabs.viewmodel.di.ActivityScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.time.LocalDateTime
 import javax.inject.Inject
 
-@ViewModelScope
+@ActivityScope
 class ReadingEntryViewModel @Inject constructor(
     private val addBloodGlucoseReading: AddBloodGlucoseReadingUseCase
 ) : ViewModel() {
@@ -22,20 +22,11 @@ class ReadingEntryViewModel @Inject constructor(
     val state: StateFlow<ReadingEntryUIModel> = _state.asStateFlow()
 
     fun onUnitChange(unit: Unit) {
-        val newState: ReadingEntryUIModel = when (unit) {
-            Unit.MMOL_L ->
-                _state.value.copy(
-                    level = _state.value.level.toDoubleOrNull()?.toMMOLL()?.toString().orEmpty(),
-                    selectedUnit = unit
-                )
-
-            Unit.MG_DL ->
-                _state.value.copy(
-                    level = _state.value.level.toDoubleOrNull()?.toMGDL()?.toString().orEmpty(),
-                    selectedUnit = unit
-                )
+        val newLevel: String = when (unit) {
+            Unit.MMOL_L -> _state.value.level.toDoubleOrNull()?.toMMOLL()?.toString().orEmpty()
+            Unit.MG_DL -> _state.value.level.toDoubleOrNull()?.toMGDL()?.toString().orEmpty()
         }
-        _state.value = newState
+        _state.value = _state.value.copy(level = newLevel, selectedUnit = unit)
     }
 
     fun onLevelChange(level: String) {
